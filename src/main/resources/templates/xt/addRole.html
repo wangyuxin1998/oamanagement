@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>添加角色</title>
+    <link rel="shortcut icon" href="favicon.gif">
+    <!---CSS Files-->
+    <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="css/iphone-check.css">
+    <link href="js/sh/shThemeDefault.css" rel="stylesheet" type="text/css" />
+    <link href="js/sh/shCore.css" rel="stylesheet" type="text/css" />
+    <!---jQuery Files-->
+    <script src="js/jquery-1.7.1.min.js"></script>
+    <script src="js/jquery-ui-1.8.17.min.js"></script>
+    <script src="js/styler.js"></script>
+    <script src="js/jquery.tipTip.js"></script>
+    <script src="js/colorpicker.js"></script>
+    <script src="js/sticky.full.js"></script>
+    <script src="js/global.js"></script>
+    <script src="js/forms/fileinput.js"></script>
+    <script src="js/forms/iphone-check.js"></script>
+    <script src="js/forms/jquery.validate.min.js"></script>
+    <script src="js/sh/shCore.js" type="text/javascript"></script>
+    <script src="js/sh/shBrushXml.js" type="text/javascript"></script>
+    <!---Fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <style type="text/css">
+        #grid_6{
+            width: 1000px;
+            margin-left: 280px;
+            margin-top: 50px;
+        }
+        #grid_p{
+            margin-bottom: 3px;
+        }
+        .form-a{
+            color: red;
+            font-size: 12px;
+            font-family: '宋体 Bold', '宋体';
+        }
+        .form-b{
+            font-size: 12px;
+            font-family: '宋体 Bold', '宋体';
+        }
+    </style>
+</head>
+<body>
+<div th:include="@{/common/indexOA.html}"></div>
+<div class="box grid_6" id="grid_6">
+    <p id="grid_p"><img id="u2_img" class="img " src="images/常用网址/u89.png"><span style="font-size: 15px">系统管理>角色管理>添加角色</span></p>
+    <div class="box-head"><h2>角色添加</h2></div><div class="box-content">
+    <div class="form-row">
+        <label class="form-label">登录名</label>
+        <div class="form-item">
+            <input type="text" name=""/>
+        </div>
+    </div>
+    <div class="form-row">
+        <label class="form-label">密码</label>
+        <div class="form-item">
+            <input type="text" name=""/>&nbsp;&nbsp;初始密码：123456
+        </div>
+    </div>
+    <div class="form-row">
+        <label class="form-label">真实姓名</label>
+        <div class="form-item">
+            <input type="text" name=""/>
+
+        </div>
+    </div>
+    <div class="form-row">
+        <label class="form-label">部门</label>
+        <div class="form-item">
+            <select>
+                <option value='option1'>请选择</option>
+                <option value='option2'>总经办</option>
+                <option value='option3'>人事部</option>
+                <option value='option4'>行政部</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-row">
+        <label class="form-label">性别</label>
+        <div>
+            <input type="radio" checked="checked" name="sex" style="size: 20px"/>男
+            &nbsp;&nbsp;&nbsp;<input type="radio" name="sex"/>女
+        </div>
+    </div>
+    <div class="form-row">
+        <label class="form-label">职称</label>
+        <div class="form-item">
+            <select>
+                <option value='option1'>请选择</option>
+                <option value='option2'>总经办</option>
+                <option value='option3'>人事部</option>
+                <option value='option4'>行政部</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-row">
+        <label class="form-label">角色</label>
+        <div class="form-item">
+            <select>
+                <option value='option1'>请选择</option>
+                <option value='option2'>总经办</option>
+                <option value='option3'>人事部</option>
+                <option value='option4'>行政部</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-row">
+        <label class="form-label">状态</label>
+        <div>
+            <input type="radio" checked="checked" name="sex" style="size: 20px"/>可用
+            &nbsp;&nbsp;&nbsp;<input type="radio" name="sex"/>冻结
+        </div>
+    </div>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="button" class="button big blue" value="确定">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="button" class="button big red" value="取消">
+
+</div>
+    <div class="clear"></div>
+</div>
+
+</body>
+</html>

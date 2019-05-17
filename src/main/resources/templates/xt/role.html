@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>角色管理</title>
+    <link href="resources/css/jl.css" type="text/css" rel="stylesheet">
+    <style>
+        #grid_6{
+            width: 1000px;
+            margin-left: 280px;
+            margin-top: 50px;
+        }
+        .tr_th1{
+            width: 150px;
+            text-align: center;
+            border-bottom: 1px solid #999999;
+        }
+        .tr_th2{
+            width: 400px;
+            text-align: center;
+            border-bottom: 1px solid #999999;
+        }
+        .tr_th3{
+            text-align: center;
+            border-bottom: 1px solid #999999;
+        }
+    </style>
+</head>
+
+
+<body>
+<div th:include="@{/common/indexOA.html}"></div>
+<div class="box grid_12" id="grid_6">
+    <p id="grid_p"><img id="u2_img" class="img " src="images/常用网址/u89.png"><span style="font-size: 15px">系统管理>角色管理</span></p>
+    <div class="box-head"><h2>角色管理</h2></div>
+    <div class="box-content no-pad">
+        <ul class="table-toolbar">
+            <li><a th:href="@{addRole}"><img src="img/icons/basic/plus.png" alt="" /> 添加</a></li>
+        </ul>
+        <table class="display">
+            <thead>
+            <tr>
+                <th class="tr_th1">排序</th>
+                <th class="tr_th1">ID</th>
+                <th class="tr_th2">名称</th>
+                <th class="tr_th3">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="odd gradeX">
+                <td class="tr_th1">1</td>
+                <td class="tr_th1">1</td>
+                <td class="tr_th2">系统管理员</td>
+                <td class="tr_th3">
+                    <ul class="icons">
+                        <li class='silk wrench'></li>
+                        <li class='silk table-edit'></li>
+                        <li class='silk cross'></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr class="odd gradeX">
+                <td class="tr_th1">2</td>
+                <td class="tr_th1">2</td>
+                <td class="tr_th2">公司领导</td>
+                <td class="tr_th3">
+                    <ul class="icons">
+                        <li class='silk wrench'></li>
+                        <li class='silk table-edit'></li>
+                        <li class='silk cross'></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr class="odd gradeX">
+                <td class="tr_th1">3</td>
+                <td class="tr_th1">3</td>
+                <td class="tr_th2">部门领导</td>
+                <td class="tr_th3">
+                    <ul class="icons">
+                        <li class='silk wrench'></li>
+                        <li class='silk table-edit'></li>
+                        <li class='silk cross'></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr class="odd gradeX">
+                <td class="tr_th1">4</td>
+                <td class="tr_th1">4</td>
+                <td class="tr_th2">人事专员</td>
+                <td class="tr_th3">
+                    <ul class="icons">
+                        <li class='silk wrench'></li>
+                        <li class='silk table-edit'></li>
+                        <li class='silk cross'></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr class="odd gradeX">
+                <td class="tr_th1">5</td>
+                <td class="tr_th1">5</td>
+                <td class="tr_th2">普通职员</td>
+                <td class="tr_th3">
+                    <ul class="icons">
+                        <li class='silk wrench'></li>
+                        <li class='silk table-edit'></li>
+                        <li class='silk cross'></li>
+                    </ul>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

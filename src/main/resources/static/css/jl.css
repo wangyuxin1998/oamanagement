@@ -1,0 +1,54 @@
+#fudong{
+	position: relative;
+	left:20%;
+	top: 10%;
+	background: #FFFFFF;
+	width: 1000px;
+	height: 600px;
+}
+#box {
+	width: 1000px;
+	margin-left:20%;
+	margin-top: 70px;
+}
+#grid_p{
+	margin-bottom: 3px;
+}
+.right_float,.left_float{
+	float: left;
+}
+
+ #grid_6{
+	 width: 1000px;
+	 margin-left: 280px;
+	 margin-top: 50px;
+ }
+.tr_th1{
+	width: 150px;
+	text-align: center;
+	border-bottom: 1px solid #999999;
+}
+.tr_th2{
+	width: 300px;
+	text-align: center;
+	border-bottom: 1px solid #999999;
+}
+.tr_th3{
+
+	text-align: center;
+	border-bottom: 1px solid #999999;
+}
+.display{
+	margin-top: 20px;
+}
+#u265_img{
+	width: 15px;
+	margin-right: 8px;
+	margin-top: 3px;
+}
+._button{
+	margin-left: 200px;
+}
+.fugue-2_date{
+	right: 200px;
+}

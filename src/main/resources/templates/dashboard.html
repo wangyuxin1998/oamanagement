@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="utf-8">
+  <title>首页</title>
+  <link rel="shortcut icon" th:href="favicon.gif">
+  <!---CSS Files-->
+  <link rel="stylesheet" th:href="@{/css/master.css}">
+  <link rel="stylesheet" th:href="@{/css/tables.css}">
+  <!---jQuery Files-->
+  <script th:src="@{/js/jquery-1.7.1.min.js}"></script>
+  <script th:src="@{/js/jquery-ui-1.8.17.min.js}"></script>
+  <script th:src="@{/js/styler.js}"></script>
+  <script th:src="@{/js/jquery.tipTip.js}"></script>
+  <script th:src="@{/js/colorpicker.js}"></script>
+  <script th:src="@{/js/sticky.full.js}"></script>
+  <script th:src="@{/js/global.js}"></script>
+  <script th:src="@{/js/flot/jquery.flot.min.js}"></script>
+  <script th:src="@{/js/flot/jquery.flot.resize.min.js}"></script>
+  <script th:src="@{/js/jquery.dataTables.min.js}"></script>
+  <!---Fonts-->
+  <link th:href='@{http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700}' rel="stylesheet" type="text/css">
+  <link th:href='@{http://fonts.googleapis.com/css?family=Ubuntu:500}' rel="stylesheet" type="text/css">
+  <!--[if lt IE 9]>
+  <script th:src="@{http://html5shiv.googlecode.com/svn/trunk/html5.js}"></script>
+  <![endif]-->
+  <!--[if lte IE 8]>
+  <script language="javascript" type="text/javascript" th:src="@{/js/flot/excanvas.min.js}"></script>
+  <![endif]-->
+</head>
+<body>
+
+  <!--- HEADER -->
+
+  <div th:include="common/indexOA.html"></div>
+  <!--- CONTENT AREA -->
+
+  <div class="content container_12">
+  	
+  	<!--第一个框-->
+      <div class="ad-notif-info grid_12"><p><marquee> <li class="silk sound" style="float: left;"></li>欢迎 to Adminity! You can dismiss me by clicking me!</marquee> </p></div>
+      
+      
+      <div class="box grid_3">
+      	<!--左一-->
+        <div class="box-head"><h2><li style="float: left;" class="silk page-paste"></li>&nbsp;我的便签 <a href="#"><li class="silk add" style="float: right;"></li></a></h2></div>
+        <div class="box-content">
+        	
+          	<p>
+          		<li style="display: inline-block;" class="silk book-open"></li> &nbsp;&nbsp;<a href="#">个人工作总结</a>
+          	</p>
+          	
+        </div>
+        <!--左一结束-->
+      </div>
+      
+      <div class="box grid_3">
+      	<!--左二-->
+        <div class="box-head"><span class="box-icon-24 fugue-24 counter"></span><h2>常用工具</h2></div>
+        <div class="box-content ad-stats">
+         
+        </div>
+        <!--左二结束-->
+      </div>
+      
+      <div class="box grid_6">
+      	<!--左三-->
+        <div class="box-head"><span class="box-icon-24 fugue-24 system-monitor"></span>
+        	<h2>通知公告
+        		<div style="float: right;">
+       				<p><a href="#" style="color: #5D8100;">更多》</a></p>
+      			</div>
+        	</h2>
+        </div>
+        <div class="box-content">
+        	<table>
+         	<tr>
+         		<td style="width: 530px;" align="center">标题</td>
+         		<td style="width: 100px;" align="center">日期</td>
+         	</tr>
+         	</table>
+         	<table>
+         	 <tr>
+         		<td style="width: 530px;">十一放假通知</td>
+         		<td style="width: 100px;" align="center">9/10</td>
+         	 </tr>
+         	</table>
+        </div>
+        <!--左三结束-->
+      </div>
+            
+      <div class="box grid_12">
+      <!--待处理块-->
+        <div class="box-head"><h2><li class="silk flag-red" style="float: left;"></li>&nbsp;待处理任务
+       				<a href="#" style="color: #5D8100;margin-left: 930px;">更多》</a>
+        </h2></div>
+        <div class="box-content no-pad">
+        <table class="display" id="example">
+        <thead>
+          <tr>
+            <th>任务名称</th>
+            <th>状态</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+        	
+          <tr class="odd gradeX">
+            <td>张三请假申请</td>
+            <td>待审核</td>
+            <td align="center">
+            	<table>
+            		<tr>
+            			<td>
+            				<a href="#" title="查看"><li class="silk magnifier"></li></a>
+            			</td>
+            			<td>
+            				<a href="#" title="审核"><li class="silk layout-edit"></li></a>
+            			</td>
+            		</tr>
+            	</table>
+            </td>
+          </tr>
+          
+          <tr class="even gradeC">
+            <td>张三请假申请</td>
+            <td>待审核</td>
+             <td align="center">
+            	<table>
+            		<tr>
+            			<td>
+            				<a href="#" title="查看"><li class="silk magnifier"></li></a>
+            			</td>
+            			<td>
+            				<a href="#" title="审核"><li class="silk layout-edit"></li></a>
+            			</td>
+            		</tr>
+            	</table>
+            </td>
+          </tr>
+          
+          <tr class="odd gradeA">
+            <td>张三请假申请</td>
+            <td>待审核</td>
+             <td align="center">
+            	<table>
+            		<tr>
+            			<td>
+            				<a href="#" title="查看"><li class="silk magnifier"></li></a>
+            			</td>
+            			<td>
+            				<a href="#" title="审核"><li class="silk layout-edit"></li></a>
+            			</td>
+            		</tr>
+            	</table>
+            </td>
+          </tr>
+          
+          <tr class="even gradeA">
+            <td>张三请假申请</td>
+            <td>审核中</td>
+             <td align="center">
+            	<table>
+            		<tr>
+            			<td>
+            				<a href="#" title="查看"><li class="silk magnifier"></li></a>
+            			</td>
+            			<td>
+            				<a href="#" title="审核"><li class="silk layout-edit"></li></a>
+            			</td>
+            		</tr>
+            	</table>
+            </td>
+          </tr>
+          
+        </tbody>
+      </table>
+     </div>
+    <!--待处理结束-->
+   </div>
+  </div>
+<div class="footer">
+  <p>Powered by Adminity Administration Interface</p>
+</div>
+
+<script> /* SCRIPTS */
+  $(function () {
+      var sin = [], cos = [];
+      for (var i = 0; i < 14; i += 0.5) {
+          sin.push([i, Math.sin(i)]);
+          cos.push([i, Math.cos(i)]);
+      }
+      var plot = $.plot($("#flot-demo"),
+             [ { data: sin, label: "Green", color: "#71a100"}, { data: cos, label: "Blue", color: "#308eef" } ], {
+                 series: {
+                     lines: { show: true },
+                     points: { show: true }
+                 },
+                 grid: { hoverable: true },
+                 yaxis: { min: -1.2, max: 1.2 }
+               });
+      var previousPoint = null;
+      $("#flot-demo").bind("plothover", function (event, pos, item) {
+          if ($("#enablePosition:checked").length > 0) {
+              var str = "(" + pos.x.toFixed(2) + ", " + pos.y.toFixed(2) + ")";
+              $("#hoverdata").text(str);
+          }
+      });
+  });/* for the flot chart demo */
+
+  $('#example').dataTable( {
+      "bJQueryUI": true
+  }); /* For the data tables */
+</script>
+
+
+</body>
+</html>

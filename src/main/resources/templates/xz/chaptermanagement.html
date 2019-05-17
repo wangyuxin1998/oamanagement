@@ -1,0 +1,193 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>用章管理</title>
+    <style>
+      #box {
+        width: 1000px;
+        margin-left:20%;
+        margin-top: 70px;
+      }
+      #grid_p{
+        margin-bottom: 3px;
+      }management
+    </style>
+  </head>
+
+
+  <body>
+  <div th:include="@{/common/indexOA.html}"></div>
+  <div class="box grid_6" id="box">
+    <p id="grid_p"><img id="u2_img" class="img " src="images/常用网址/u89.png"><span style="font-size: 15px">行政管理>用章管理</span></p>
+    <div id="tabs">
+      <ul>
+        <li>
+          <a href="#tabs-1">用章申请</a>
+        </li>
+      </ul>
+      <div id="tabs-1">
+        <form action="/addUserChapter">
+        <p>
+        <div class="form-row">
+          <label class="form-label">姓名:</label>
+          <div class="form-item">
+            <input type="text" id="colorpicker"  th:value="${session.name.realName}" disabled="disabled" style="width: 400px"/>
+          </div>
+        </div>
+        <div class="form-row">
+          <label class="form-label">部门:</label>
+          <div class="form-item">
+            <input type="text" id="colorpicker" th:value="${session.department.departmentName}" disabled="disabled" style="width: 400px"/>
+          </div>
+        </div>
+        <div class="form-row">
+          <label class="form-label">用章类型:</label>
+          <div class="form-item">
+            <select id="chapterID" name="chapterID" style="width: 400px">
+                <option value="">请选择</option>
+               <p th:each="chapter:${session.chapterList}"><option th:value="${chapter.charterID}" th:text="${chapter.chapterName}"></option></p>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label class="form-label">事由</label>
+          <div class="form-item">
+            <textarea id="reason" name="reason" style="width: 400px;height: 100px" ></textarea>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label class="form-label">下一审批人</label>
+          <div class="form-item">
+            <!-- <select style="width: 400px;height: 30px;font-size: 10px">
+               <option value='option1'>选择审批人</option>
+             </select>-->
+            <input style="width: 400px;" th:value="${session.NextUser.realName}" disabled="disabled"  >
+          </div>
+        </div>
+        <div style="margin-left: 170px;margin-top: 15px">
+          <input type="submit" id="submitChapter" class="button green" value="提交" >
+          <input type="button" id="tip-top" class="button red" value="取消">
+        </div>
+        </p>
+        </form>
+      </div>
+      <div id="tabs-2">
+        <p></p>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function() {
+
+      $('#tip-left').tipTip({
+        attribute: "value",
+        delay: "100",
+        defaultPosition: "left"
+      });
+      $('#tip-top').tipTip({
+        attribute: "value",
+        delay: "100",
+        defaultPosition: "top"
+      });
+      $('#tip-right').tipTip({
+        attribute: "value",
+        delay: "100",
+        defaultPosition: "right"
+      });
+      $('#tip-bottom').tipTip({
+        attribute: "value",
+        delay: "100",
+        defaultPosition: "bottom"
+      });
+
+      $('#slider').slider({
+        range: "min",
+        value: 50
+      });
+
+      $('#range-slider').slider({
+        range: true,
+        min: 0,
+        max: 400,
+        values: [100, 300]
+      });
+
+      $("#eq > span").each(function() {
+        var value = parseInt($(this).text(), 10);
+        $(this).empty().slider({
+          value: value,
+          range: "min",
+          animate: true,
+          orientation: "vertical"
+        });
+      });
+
+      $("#accordion").accordion({
+        fillSpace: true
+      });
+
+      $("#tabs").tabs();
+
+      $("#progressbar").progressbar({
+        value: 1
+      });
+      $("#progressbar .ui-progressbar-value").addClass("ui-corner-right");
+
+      new_width = "100%";
+      loop_width = "1%";
+      $("#progressbar .ui-progressbar-value").animate({
+        width: new_width
+      }, 60000);
+
+      $("#dialog").dialog({
+        autoOpen: false,
+        resizable: false,
+        buttons: {
+          Close: function() {
+            $(this).dialog("close");
+          }
+        }
+      });
+
+      $("#open-dialog").click(function() {
+        $("#dialog").dialog("open");
+        return false;
+      });
+
+      $("#modal-dialog").dialog({
+        autoOpen: false,
+        resizable: false,
+        modal: true,
+        buttons: {
+          Close: function() {
+            $(this).dialog("close");
+          }
+        }
+      });
+
+      $("#open-modal-dialog").click(function() {
+        $("#modal-dialog").dialog("open");
+        return false;
+      });
+
+      $('#open-notif').click(function() {
+        $.sticky('I am a simple notification.')
+      });
+
+      $('#open-comp-notif').click(function() {
+        $.sticky('<b>I am a complex notification.</b><br><br><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>')
+      });
+
+      SyntaxHighlighter.all()
+
+      $('#iphone-check').iphoneStyle();
+
+      $("#datepicker").datepicker();
+
+      $("#colorpicker").ColorPicker();
+    });
+  </script>
+  </body>
+</html>

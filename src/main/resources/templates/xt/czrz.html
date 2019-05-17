@@ -1,0 +1,200 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>操作日志</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <link href="resources/css/jl.css" type="text/css" rel="stylesheet">
+    <style type="text/css">
+        #grid_6{
+            width: 1000px;
+            margin-left: 280px;
+            margin-top: 95px;
+        }
+        .tr-td{
+            text-align: center;
+            border-bottom: 1px solid #99ccff;
+        }
+    </style>
+</head>
+<body>
+<div th:include="@{/common/indexOA.html}"></div>
+<div class="box grid_6" id="grid_6">
+    <p id="grid_p"><img id="u2_img" class="img " src="images/常用网址/u89.png"><span style="font-size: 15px">系统管理>操作日志</span></p>
+    <div id="tabs" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
+        <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
+            <li class="ui-state-default ui-corner-top ui-tabs-selected ui-state-active">
+                <a href="#tabs-1">操作日志</a>
+            </li>
+        </ul>
+        <div id="tabs-1" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
+            <div style="margin-bottom: 2px;">
+                <form action="#" method="post">
+                    用户名：<input type="text" th:name="userName" style="width: 150px;height: 10px"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    时间段：<input type="text" style="height: 10px;width: 150px;" />~<input type="text" style="height: 10px;width: 150px;" />
+                    <input type="button" class="button black" value="查询" style="margin-left: 80px;">
+                </form>
+            </div>
+            <div class="box-head">
+                <h2>查询结果：</h2>
+            </div>
+            <div class="box-content no-pad">
+                <div id="dt1_wrapper" class="dataTables_wrapper" role="grid">
+                    <table class="display dataTable">
+
+                        <thead>
+                        <tr role="row">
+                            <th class="ui-state-default" role="columnheader" tabindex="0" aria-controls="dt1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 100px;">
+                                <div class="DataTables_sort_wrapper">选择<span class="DataTables_sort_icon css_right ui-icon ui-icon-triangle-1-n">
+          	</span></div>
+                            </th>
+                            <th class="ui-state-default" role="columnheader" tabindex="0" aria-controls="dt1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 100px;">
+                                <div class="DataTables_sort_wrapper">编号
+                                    <span class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span>
+                                </div>
+                            </th>
+                            <th class="ui-state-default" role="columnheader" tabindex="0" aria-controls="dt1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 200px;">
+                                <div class="DataTables_sort_wrapper">用户名
+                                    <span class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span>
+                                </div>
+                            </th>
+                            <th class="ui-state-default" role="columnheader" tabindex="0" aria-controls="dt1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 300px;">
+                                <div class="DataTables_sort_wrapper">事件
+                                    <span class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span>
+                                </div>
+                            <th class="ui-state-default" role="columnheader" tabindex="0" aria-controls="dt1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 200px;">
+                                <div class="DataTables_sort_wrapper">备注
+                                    <span class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span>
+                                </div>
+                            </th>
+                            <th class="ui-state-default" role="columnheader" tabindex="0" aria-controls="dt1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 200px;">
+                                <div class="DataTables_sort_wrapper">操作时间
+                                    <span class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span>
+                                </div>
+                            </th>
+                        </tr>
+                        </thead>
+                        <form action="#" method="post">
+                            <tbody role="alert" aria-live="polite" aria-relevant="all">
+                            <tr class="gradeA odd">
+                                <td class="tr-td">
+                                    <input type="checkbox" value="" />
+                                </td>
+                                <td class="tr-td">
+                                    C312
+                                </td>
+                                <td class="tr-td">
+                                    三楼多媒体会议室
+                                </td>
+                                <td class="tr-td">
+                                    三楼多媒体会议室
+                                </td>
+                                <td class="tr-td">
+                                    三楼多媒体会议室
+                                </td>
+                                <td class="tr-td">
+                                    三楼多媒体会议室
+                                </td>
+                            </tr>
+                            <tr class="gradeA odd">
+                                <td class="tr-td">
+                                    <input type="checkbox" value="" />
+                                </td>
+                                <td class="tr-td">
+                                    C312
+                                </td>
+                                <td class="tr-td">
+                                    三楼多媒体会议室
+                                </td>
+                                <td class="tr-td">
+                                    三楼多媒体会议室
+                                </td>
+                                <td class="tr-td">
+                                    三楼多媒体会议室
+                                </td>
+                                <td class="tr-td">
+                                    三楼多媒体会议室
+                                </td>
+                            </tr>
+                            <tr class="gradeA odd">
+                                <td class="tr-td">
+                                    <input type="checkbox" value="" />
+                                </td>
+                                <td class="tr-td">
+                                    C312
+                                </td>
+                                <td class="tr-td">
+                                    三楼多媒体会议室
+                                </td>
+                                <td class="tr-td">
+                                    三楼多媒体会议室
+                                </td>
+                                <td class="tr-td">
+                                    三楼多媒体会议室
+                                </td>
+                                <td class="tr-td">
+                                    三楼多媒体会议室
+                                </td>
+                            </tr>
+                            <tr class="gradeA odd">
+                                <td class="tr-td">
+                                    <input type="checkbox" value="" />
+                                </td>
+                                <td class="tr-td">
+                                    C312
+                                </td>
+                                <td class="tr-td">
+                                    三楼多媒体会议室
+                                </td>
+                                <td class="tr-td">
+                                    三楼多媒体会议室
+                                </td>
+                                <td class="tr-td">
+                                    三楼多媒体会议室
+                                </td>
+                                <td class="tr-td">
+                                    三楼多媒体会议室
+                                </td>
+                            </tr>
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+            <!--<div>
+                <a style="margin-left: 50px;">会议室预定人：李四</a>
+                <a style="margin-left: 100px;">会议类型：
+                    <select name="lei" style="height: 27px;">
+                        <option value="1">请选择类型</option>
+                        <option value="1">会议</option>
+                        <option value="1">培训</option>
+                        <option value="1">面试</option>
+                        <option value="1">会客</option>
+                        <option value="1">其他</option>
+                    </select>
+                </a>
+                <a style="margin-left: 80px;"><input type="button" class="button small green" value="预定"></a>
+            </div>-->
+            </form>
+            <!--表单结束-->
+        </div>
+    </div>
+</div>
+<script>
+    $(function() {
+        $("#tabs").tabs();
+        $('#dt1').dataTable({
+            "bJQueryUI": true
+        });
+        $('#dt2').dataTable({
+            "bJQueryUI": true
+        });
+        $('#dt3').dataTable({
+            "bJQueryUI": true,
+            "sPaginationType": "full_numbers"
+        }); /* For the data tables */
+
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,288 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+  <head>
+    <title>用车管理</title>
+    <link href="css/jl.css" type="text/css" rel="stylesheet">
+    <style>
+      #box {
+        width: 1000px;
+        margin-left:20%;
+        margin-top: 70px;
+        }
+      #grid_p{
+        margin-bottom: 3px;
+      }
+      .form-a{
+          color: red;
+          font-size: 12px;
+          font-family: '宋体 Bold', '宋体';
+      }
+    </style>
+  </head>
+
+
+  <body>
+  <div th:include="@{common/indexOA.html}"></div>
+
+  <div class="box grid_6" id="box">
+    <p id="grid_p"><img id="u2_img" class="img " src="images/常用网址/u89.png"><span style="font-size: 15px">行政管理>用车管理</span></p>
+
+    <div id="tabs">
+      <ul>
+        <li>
+          <a href="#tabs-1">用车申请</a>
+        </li>
+        <li>
+          <a href="#tabs-2">车辆信息管理</a>
+        </li>
+
+      </ul>
+
+      <div id="tabs-1">
+        <form action="/applyCar" method="post" id="usedCarsForm">
+        <div class="form-row" th:text="${ok}" style="color: red"></div>
+        <div class="form-row">
+          <label class="form-label">车辆编号</label>
+          <div class="form-item">
+            <select style="width: 400px" id="carID" th:name="carID">
+                <option value="" selected="selected">请选择</option>
+               <p th:each="car:${carList}" th:if="${car.state==1}"><option  th:value="${car.carID}" th:text="${car.carID}"></option></p>
+               <p th:each="car:${carList}" th:if="${car.state!=1&&car.state!=0}"><option th:each="car:${carList}" th:if="${car.state==0}"th:text="暂无可用"></option></p>
+            </select>
+            <span style="color: red" id="carIDErroy">*</span>
+          </div>
+        </div>
+        <div class="form-row">
+          <label class="form-label">用车人</label>
+          <div class="form-item">
+            <input type="text" id="colorpicker" style="width: 400px"   th:value="${session.name.realName}" disabled="disabled"/>
+          </div>
+        </div>
+        <div class="form-row">
+          <label class="form-label">随行人员</label>
+          <div class="form-item">
+            <input type="text" id="datepicker" style="width: 400px" name="entourage"/>
+          </div>
+        </div>
+        <div class="form-row">
+          <label class="form-label">使用时间</label>
+          <div class="form-item">
+            <input type="text" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm',maxDate:'#F{$dp.$D(\'returnTime\')}',minDate:'%y-%M-%d-%h-%mm'});"class="Wdate" id="stTime"  style="width: 190px" name="stTime">-
+            <input type="text" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm',minDate:'#F{$dp.$D(\'stTime\')||\'%y-%M-%d-%h-%m\'}'});"  class="Wdate"  style="width: 195px"id="returnTime" name="returnTime">
+            <span style="color: red" id="dateErroy">*</span>
+          </div>
+        </div>
+        <div class="form-row">
+          <label class="form-label">司机</label>
+          <div class="form-item">
+            <input type="text" id="colorpicker" style="width: 400px" name="driver" th:value="${session.name.realName}"/>
+              <span id="colorpickerError" style="color: red">*</span>
+          </div>
+        </div>
+        <div class="form-row">
+          <label class="form-label">用车部门</label>
+          <div class="form-item">
+            <span th:text="${session.department.getDepartmentName()}" ></span>
+          </div>
+        </div>
+        <div class="form-row">
+          <label class="form-label">目的地</label>
+          <div class="form-item">
+            <input type="text" id="datepicker" style="width: 400px" name="destination"/>
+              <span id="datepickerError" style="color: red">*</span>
+          </div>
+        </div>
+        <div class="form-row">
+          <label class="form-label">申请里程(公里)</label>
+          <div class="form-item">
+            <input type="text" id="requestMileage" style="width: 400px" name="requestMileage"/>
+              <span id="requestMileageError" style="color: red">*</span>
+          </div>
+        </div>
+        <div class="form-row">
+          <label class="form-label">用车事由</label>
+          <div class="form-item">
+            <textarea id="shiyou" style="width: 400px;height: 80px"  name="reason"></textarea>
+          </div>
+        </div>
+          <div class="form-row">
+            <label class="form-label">下一审批人</label>
+            <div class="form-item">
+             <!-- <select style="width: 400px;height: 30px;font-size: 10px">
+                <option value='option1'>选择审批人</option>
+              </select>-->
+              <input style="width: 400px;" th:value="${session.NextUser.realName}" disabled="disabled"  >
+            </div>
+          </div>
+            <div class="form-row">
+                <label class="form-label"> </label>
+                <div class="form-item">
+                    <span class="form-a">说明：</span><br>
+                    <span class="form-a">1.下一级审批人为部门经理</span><br>
+                    <span class="form-a">2.*为必填项</span><br>
+                </div>
+            </div>
+            <div style="margin-left: 170px;margin-top: 15px">
+            <input type="button" id="tip-left" class="button green" value="提交" >
+            <input type="button" id="tip-top" class="button red" value="取消">
+            </div>
+    </form>
+      </div>
+      <div id="tabs-2">
+        <span id="hint" style="color: red"></span>
+        <a href="/addCar" style="float: right"><img id="u265_img" class="img " src="images/我的桌面/u130.png" >添加车辆</a>
+        <table class="display" style="margin-top: 20px">
+          <thead>
+          <tr>
+            <th class="tr_th1">车牌号</th>
+            <th class="tr_th1">车型</th>
+            <th class="tr_th2">编号</th>
+              <th class="tr_th1">状态</th>
+            <th class="tr_th2">备注</th>
+            <th class="tr_th1">操作</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr class="odd gradeX" th:each="car:${carList}">
+              <td class="tr_th1" th:text="${car.licenseNumber}"></td>
+              <td class="tr_th1" th:text="${car.carType}"></td>
+              <td class="tr_th2" th:text="${car.carID}"></td>
+              <td class="tr_th1"><span th:if="${car.state==1}">未使用</span><span th:if="${car.state==0}">正在使用</span></td>
+              <td class="tr_th2" th:text="${car.note}"></td>
+              <td class="tr_th3">
+                  <ul class="icons">
+                  <a th:id="${car.carID}" th:class="silkUp"th:href="@{/updateCar(carID=${car.carID})}"><li class='silk table-edit' title="修改" ></li></a>
+                  <a th:id="${car.carID}" th:class="silkDel"> <li class='silk cross'  title="删除"></li></a>
+              </ul>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function() {
+
+
+
+      $('#tip-left').tipTip({
+        attribute: "value",
+        delay: "100",
+        defaultPosition: "left"
+      });
+      $('#tip-top').tipTip({
+        attribute: "value",
+        delay: "100",
+        defaultPosition: "top"
+      });
+      $('#tip-right').tipTip({
+        attribute: "value",
+        delay: "100",
+        defaultPosition: "right"
+      });
+      $('#tip-bottom').tipTip({
+        attribute: "value",
+        delay: "100",
+        defaultPosition: "bottom"
+      });
+
+      $('#slider').slider({
+        range: "min",
+        value: 50
+      });
+
+      $('#range-slider').slider({
+        range: true,
+        min: 0,
+        max: 400,
+        values: [100, 300]
+      });
+
+      $("#eq > span").each(function() {
+        var value = parseInt($(this).text(), 10);
+        $(this).empty().slider({
+          value: value,
+          range: "min",
+          animate: true,
+          orientation: "vertical"
+        });
+      });
+
+      $("#accordion").accordion({
+        fillSpace: true
+      });
+
+      $("#tabs").tabs();
+
+      $("#progressbar").progressbar({
+        value: 1
+      });
+      $("#progressbar .ui-progressbar-value").addClass("ui-corner-right");
+
+      new_width = "100%";
+      loop_width = "1%";
+      $("#progressbar .ui-progressbar-value").animate({
+        width: new_width
+      }, 60000);
+
+      $("#dialog").dialog({
+        autoOpen: false,
+        resizable: false,
+        buttons: {
+          Close: function() {
+            $(this).dialog("close");
+          }
+        }
+      });
+
+      $("#open-dialog").click(function() {
+        $("#dialog").dialog("open");
+        return false;
+      });
+
+      $("#modal-dialog").dialog({
+        autoOpen: false,
+        resizable: false,
+        modal: true,
+        buttons: {
+          Close: function() {
+            $(this).dialog("close");
+          }
+        }
+      });
+
+      $("#open-modal-dialog").click(function() {
+        $("#modal-dialog").dialog("open");
+        return false;
+      });
+
+      $('#open-notif').click(function() {
+        $.sticky('I am a simple notification.')
+      });
+
+      $('#open-comp-notif').click(function() {
+        $.sticky('<b>I am a complex notification.</b><br><br><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>')
+      });
+
+      SyntaxHighlighter.all()
+
+      $('#iphone-check').iphoneStyle();
+
+      $("#datepicker").datepicker();
+
+      $("#colorpicker").ColorPicker();
+
+
+        laydate.render({
+          elem: '#colorpicker2'
+          , type: 'datetime'
+        });
+         laydate.render({
+           elem: '#colorpicker3'
+           , type: 'datetime'
+         });
+  });
+  </script>
+  </body>
+</html>

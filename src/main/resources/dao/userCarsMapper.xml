@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.UserCarDao">
+    <!--  /*查询所有车辆信息*/-->
+    <select id="findByCar" resultType="Car">
+        select * from car
+    </select>
+    <!--查询所有可以使用的车辆-->
+    <select id="findCarByID" resultType="Car">
+        select * from car where carID=#{carID}
+    </select>
+    <!--根据车牌号查询车辆信息-->
+    <select id="findCarBylicenseNumber" resultType="Car">
+        select * from car where licenseNumber=#{licenseNumber}
+    </select>
+    <!--添加车辆-->
+    <insert id="addCar" parameterType="Car">
+        INSERT INTO car(carType,licenseNumber,note,state)values(#{car.carType},#{car.licenseNumber},#{car.note},#{car.state})
+    </insert>
+    <select id="findByDepartmentId" resultType="Department" parameterType="int">
+        select * from Department where DepartmentId=#{departmentID}
+    </select>
+    <!--/*根据用户的部门查找部门经理*/-->
+    <select id="findPositionbyID" resultType="Position" parameterType="String">
+        select * from position where positionName=#{positionName}
+    </select>
+    <select id="findUserByPidAndRid" resultType="User">
+       select * from USER where positionid=#{positionId} and departmentID=#{departmentID}
+    </select>
+    <!--插入申请用车-->
+    <insert id="addCarManagement" parameterType="carManagement">
+        insert into carManagement(carId,userId,driver,entourage,
+        departmentID,requedepartment,stTime,returnTime,destination,
+        requestMileage,reasonID,approverID,state,reason)values
+        (#{carManagement.carID},#{carManagement.userID},#{carManagement.driver},#{carManagement.entourage},
+        #{carManagement.departmentID},#{carManagement.requedepartment},#{carManagement.stTime},#{carManagement.returnTime},#{carManagement.destination},
+        #{carManagement.requestMileage},#{carManagement.reasonID},#{carManagement.approverID},#{carManagement.state},#{carManagement.reason})
+    </insert>
+    <!--/*修改车辆状态*/-->
+    <update id="updateCarState">
+        update car set state=0 where carID=#{carID}
+    </update>
+   <!-- /*任务表中插入数据*/-->
+    <insert id="addTask" parameterType="task">
+
+        insert into task(taskName,startTime,userID,Next_user,state,departmentID,approverID,#{resonID})
+        values (#{taskName},#{startTime},#{userID},#{Next_user},#{state},
+        departmentID},#{approverID},#{reasonID})
+    </insert>
+    <delete id="delCar" parameterType="int">
+        delete from car where carID=#{carID}
+    </delete>
+    <insert id="addOarecycle" parameterType="Oarecycle">
+        insert  into oarecycle (applyID,create_TIME,userID,reasonID)values
+        (#{oarecycle.applyID},#{oarecycle.create_TIME},#{oarecycle.userID},#{oarecycle.reasonID})
+    </insert>
+    <!--修改车量信息-->
+    <update id="updateCar" parameterType="Car">
+        update  car set carType=#{car.carType},licenseNumber=#{car.licenseNumber},note=#{car.note}where carID=#{car.carID}
+    </update>
+</mapper>

@@ -1,0 +1,338 @@
+﻿<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+
+  <title>会议室管理</title>
+  <link rel="shortcut icon" href="favicon.gif">
+  <!---CSS Files-->
+  <link rel="stylesheet" href="css/master.css">
+  <link rel="stylesheet" href="css/iphone-check.css">
+  <link href="js/sh/shThemeDefault.css" rel="stylesheet" type="text/css" />
+  <link href="js/sh/shCore.css" rel="stylesheet" type="text/css" />
+  <!---jQuery Files-->
+  <script src="js/jquery-1.7.1.min.js"></script>
+  <script src="js/jquery-ui-1.8.17.min.js"></script>
+  <script src="js/styler.js"></script>
+  <script src="js/jquery.tipTip.js"></script>
+  <script src="js/colorpicker.js"></script>
+  <script src="js/sticky.full.js"></script>
+  <script src="js/global.js"></script>
+  <script src="js/forms/fileinput.js"></script>
+  <script src="js/forms/iphone-check.js"></script>
+  <script src="js/forms/jquery.validate.min.js"></script>
+  <script src="js/sh/shCore.js" type="text/javascript"></script>
+  <script src="js/sh/shBrushXml.js" type="text/javascript"></script>
+  <!---Fonts-->
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link rel="shortcut icon" href="favicon.gif">
+  <!---CSS Files-->
+  <link rel="stylesheet" href="css/master.css">
+  <link rel="stylesheet" href="css/tables.css">
+  <!---jQuery Files-->
+  <script src="js/jquery-1.7.1.min.js"></script>
+  <script src="js/jquery-ui-1.8.17.min.js"></script>
+  <script src="js/styler.js"></script>
+  <script src="js/jquery.tipTip.js"></script>
+  <script src="js/colorpicker.js"></script>
+  <script src="js/sticky.full.js"></script>
+  <script src="js/global.js"></script>
+  <script src="js/jquery.dataTables.min.js"></script>
+  <!---Fonts-->
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <!--[if lte IE 8]>
+  <script language="javascript" type="text/javascript" src="js/flot/excanvas.min.js"></script>
+  <![endif]-->
+
+  <style>
+    #daxiao {
+      width: 1000px;
+      height: 700px;
+      margin-left:20%;
+      margin-top: 70px;
+    }
+  </style>
+</head>
+
+<body>
+<div th:include="@{/common/indexOA.html}"></div>
+<div class="box grid_6" id="daxiao">
+  <div id="tabs" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
+    <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
+      <li class="ui-state-default ui-corner-top ui-tabs-selected ui-state-active">
+        <a href="#tabs-1">会议室预定</a>
+      </li>
+      <li class="ui-state-default ui-corner-top">
+        <a href="#tabs-2">会议室预定管理</a>
+      </li>
+      <li class="ui-state-default ui-corner-top">
+        <a href="#tabs-3">会议室管理</a>
+      </li>
+    </ul>
+    <div id="tabs-1" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
+      <!--表单-->
+      <div style="margin-left: 107px;">
+        <a style="font-size: 12px;">提示：预定时间段必须为同一天</a>
+      </div>
+      <div style="margin-bottom: 2px;">
+        <form action="#" method="post">
+          预定时间段：<input type="text" style="height: 10px;" />~<input type="text" style="height: 10px;" />
+          <input type="button" class="button black" value="查询" style="margin-left: 80px;">
+        </form>
+      </div>
+      <div class="box-head">
+        <h2>可预订会议室查询结果：</h2>
+      </div>
+      <div class="box-content no-pad">
+        <div id="dt1_wrapper" class="dataTables_wrapper" role="grid">
+          <table class="display dataTable">
+
+            <thead>
+            <tr role="row">
+              <th class="ui-state-default" role="columnheader" tabindex="0" aria-controls="dt1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 248px;">
+                <div class="DataTables_sort_wrapper">选择<span class="DataTables_sort_icon css_right ui-icon ui-icon-triangle-1-n">
+          	</span></div>
+              </th>
+              <th class="ui-state-default" role="columnheader" tabindex="0" aria-controls="dt1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 344px;">
+                <div class="DataTables_sort_wrapper">会议室名称
+                  <span class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span>
+                </div>
+              </th>
+              <th class="ui-state-default" role="columnheader" tabindex="0" aria-controls="dt1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 321px;">
+                <div class="DataTables_sort_wrapper">会议室描述
+                  <span class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span>
+                </div>
+              </th>
+            </tr>
+            </thead>
+            <form action="#" method="post">
+              <tbody role="alert" aria-live="polite" aria-relevant="all">
+              <tr class="gradeA odd">
+                <td>
+                  <input type="checkbox" value="" />
+                </td>
+                <td>
+                  C312
+                </td>
+                <td>
+                  三楼多媒体会议室
+                </td>
+              </tr>
+              </tbody>
+          </table>
+        </div>
+      </div>
+      <div>
+        <a style="margin-left: 50px;">会议室预定人：李四</a>
+        <a style="margin-left: 100px;">会议类型：
+          <select name="lei" style="height: 27px;">
+            <option value="1">请选择类型</option>
+            <option value="1">会议</option>
+            <option value="1">培训</option>
+            <option value="1">面试</option>
+            <option value="1">会客</option>
+            <option value="1">其他</option>
+          </select>
+        </a>
+        <a style="margin-left: 80px;"><input type="button" class="button small green" value="预定"></a>
+      </div>
+      </form>
+      <!--表单结束-->
+    </div>
+    <!--会议室预定管理-->
+    <div id="tabs-2" class="ui-tabs-panel ui-widget-content ui-corner-bottom ui-tabs-hide">
+      <div style="margin-left: 107px;">
+        <a style="font-size: 12px;color: #960004">提示：预定时间段必须为同一天</a>
+      </div>
+      <div style="margin-bottom: 2px;">
+        <form action="#" method="post">
+          <a>预定时间段：</a><input type="text" style="height: 10px;width: 100px;" />~<input type="text" style="height: 10px;width: 100px;" />
+          <a style="margin-left: 20px;">预定人：</a><input type="text" name="name" style="height: 10px;width: 100px;" />
+          <a>会议室名称：</a><input type="text" name="name" style="height: 10px;width: 100px;" />
+          <input type="button" class="button black" value="查询" style="margin-left: 80px;">
+        </form>
+      </div>
+      <a style="font-size: 13px;margin-left: 5px;">查询结果：</a>
+      <hr />
+      <table class="display dataTable">
+        <thead>
+        <tr role="row">
+          <th class="ui-state-default" role="columnheader" tabindex="0" aria-controls="dt1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 248px;">
+            <div class="DataTables_sort_wrapper">选择<span class="DataTables_sort_icon css_right ui-icon ui-icon-triangle-1-n">
+          								</span></div>
+          </th>
+          <th class="ui-state-default" role="columnheader" tabindex="0" aria-controls="dt1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 344px;">
+            <div class="DataTables_sort_wrapper">会议室名称
+              <span class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span>
+            </div>
+          </th>
+          <th class="ui-state-default" role="columnheader" tabindex="0" aria-controls="dt1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 321px;">
+            <div class="DataTables_sort_wrapper">会议室起始时间
+              <span class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span>
+            </div>
+          </th>
+          <th class="ui-state-default" role="columnheader" tabindex="0" aria-controls="dt1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 321px;">
+            <div class="DataTables_sort_wrapper">会议室结束时间
+              <span class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span>
+            </div>
+          </th>
+          <th class="ui-state-default" role="columnheader" tabindex="0" aria-controls="dt1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 321px;">
+            <div class="DataTables_sort_wrapper">会议室用途
+              <span class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span>
+            </div>
+          </th>
+          <th class="ui-state-default" role="columnheader" tabindex="0" aria-controls="dt1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 321px;">
+            <div class="DataTables_sort_wrapper">记录人
+              <span class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span>
+            </div>
+          </th>
+          <th class="ui-state-default" role="columnheader" tabindex="0" aria-controls="dt1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 321px;">
+            <div class="DataTables_sort_wrapper">预定人
+              <span class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span>
+            </div>
+          </th>
+          <th class="ui-state-default" role="columnheader" tabindex="0" aria-controls="dt1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 321px;">
+            <div class="DataTables_sort_wrapper">预定时间
+              <span class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span>
+            </div>
+          </th>
+        </tr>
+        </thead>
+        <form action="#" method="post">
+          <tbody role="alert" aria-live="polite" aria-relevant="all">
+          <tr class="gradeA odd">
+            <td>
+              <input type="checkbox" value="" />
+            </td>
+            <td>
+              C312
+            </td>
+            <td>
+              2013-12-2 14:08:25
+            </td>
+            <td>
+              2013-12-2
+            </td>
+            <td>
+              会议
+            </td>
+            <td>
+              张三
+            </td>
+            <td>
+              李四
+            </td>
+            <td>
+              2013-12-1
+            </td>
+          </tr>
+          </tbody>
+      </table>
+      <div>
+        <input type="button" class="button grey disabled" value="取消预订">
+      </div>
+      </form>
+    </div>
+    <!--会议室预定管理结束-->
+    <!--会议室管理-->
+    <div id="tabs-3" class="ui-tabs-panel ui-widget-content ui-corner-bottom ui-tabs-hide">
+      <div style="margin-left: 850px;">
+        <input type="button" id="open-dialog" class="button green" value="添加会议室" style="height: 20px;"/>
+          <!--彈窗開始-->
+        <div class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-draggable" tabindex="-1" role="dialog" aria-labelledby="ui-dialog-title-dialog" style="display: block; z-index: 1005; outline: 0px; height: auto; width: 500px; top: 859px; left: 131px;">
+          <div id="dialog" class="ui-dialog-content ui-widget-content" scrolltop="0" scrollleft="0" style="width: auto; min-height: 52px; height: auto;">
+            <h3>添加会议室</h3>
+            <hr />
+            <div style="vertical-align: inherit;">
+              <form action="Meetingroomadd" method="post">
+                <a class="xiao">会议室名称：</a><input type="text" name="meetingroomName" style="height: 12px;width: 210px;" /><br/><br/>
+                <a class="xiao">描&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;述：</a><textarea rows="2" cols="20" name="describe" style="margin-top: 10px;"></textarea><br/>
+                <input type="hidden" name="recorderID" th:value="${session.name.getUserID()}"/>
+                <input type="submit" class="button green" value="添加" style="margin-left: 400px;">
+              </form>
+            </div>
+          </div>
+        </div>
+        <!--彈窗結束-->
+      </div>
+      <table class="display dataTable">
+        <thead>
+        <tr role="row">
+          <th class="ui-state-default" role="columnheader" tabindex="0" aria-controls="dt1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 248px;">
+            <div class="DataTables_sort_wrapper">序号<span class="DataTables_sort_icon css_right ui-icon ui-icon-triangle-1-n">
+          							</span></div>
+          </th>
+          <th class="ui-state-default" role="columnheader" tabindex="0" aria-controls="dt1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 344px;">
+            <div class="DataTables_sort_wrapper">会议室名称
+              <span class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span>
+            </div>
+          </th>
+          <th class="ui-state-default" role="columnheader" tabindex="0" aria-controls="dt1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 321px;">
+            <div class="DataTables_sort_wrapper">会议室描述
+              <span class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span>
+            </div>
+          </th>
+          <th class="ui-state-default" role="columnheader" tabindex="0" aria-controls="dt1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 321px;">
+            <div class="DataTables_sort_wrapper">操作
+              <span class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span>
+            </div>
+          </th>
+        </tr>
+        </thead>
+        <form action="#" method="post">
+          <tbody role="alert" aria-live="polite" aria-relevant="all">
+          <tr class="gradeA odd" th:each="val:${meetingroomall}">
+            <td style="border-bottom: 1px">
+              <span th:text="${val.meetingroomID}"></span>
+            </td>
+            <td>
+              <span th:text="${val.getMeetingroomName()}"></span>
+            </td>
+            <td>
+              <span th:text="${val.getDescribe()}"></span>
+            </td>
+            <td>
+              <a style="margin-left: 60px;">修改</a>
+              <a style="margin-left: 60px;">删除</a>
+            </td>
+          </tr>
+          </tbody>
+      </table>
+    </div>
+    <!--会议室管理结束-->
+  </div>
+</div>
+<script>
+  $(function() {
+    $("#tabs").tabs();
+    $('#dt1').dataTable({
+      "bJQueryUI": true
+    });
+    $('#dt2').dataTable({
+      "bJQueryUI": true
+    });
+    $('#dt3').dataTable({
+      "bJQueryUI": true,
+      "sPaginationType": "full_numbers"
+    }); /* For the data tables */
+    /*文件夹添加弹窗*/
+    $( "#dialog" ).dialog({
+      autoOpen: false,
+      resizable: false
+    });
+    $( "#open-dialog" ).click(function() {
+      $( "#dialog" ).dialog( "open" );
+      return false;
+    });
+  });
+</script>
+
+</body>
+
+</html>
